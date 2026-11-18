@@ -6,6 +6,8 @@ const router = Router();
 const twistService = new TwistService()
 
 router.post('/' , (req,res) => {
+  
+  
     if(!req.body?.text?.length){
       return res.status(400).json({message:"text is required"})
     }
