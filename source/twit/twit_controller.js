@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { TwistService } from "./twit_service.js";
+import { auth } from "../../auth.js";
 
 
 const router = Router();
 const twistService = new TwistService()
 
-router.post('/' , (req,res) => {
+router.post('/' ,auth, (req,res) => {
   
   
     if(!req.body?.text?.length){
