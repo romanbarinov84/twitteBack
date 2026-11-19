@@ -1,5 +1,5 @@
-import express from 'express';
-import { twitRouter } from './source/twit/twit_controller.js';
+import express, { NextFunction, Request, Response } from 'express';
+import { twitRouter } from './source/twit/twit_controller.ts';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -25,7 +25,7 @@ async function main() {
     });
 
     // Error handler
-    app.use((err, req, res, next) => {
+    app.use((err:Error, req:Request, res:Response, next:NextFunction) => {
         console.error(err);
 
         res.status(500).send('Something went wrong');
