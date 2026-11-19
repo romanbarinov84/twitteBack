@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { TwistService } from "./twit_service.js";
-import { auth } from "../../auth.js";
+import { auth } from '../../auth.js';
 
 
 const router = Router();

@@ -4,9 +4,9 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
 
-    "rootDir": "./src",
+    "rootDir": "./",
     "outDir": "./dist",
-    "baseUrl":"./",
+    
     
 
     "strict": true,
@@ -14,6 +14,6 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["source/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

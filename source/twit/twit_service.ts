@@ -1,11 +1,7 @@
-
-
-
-
-
+import { ITwit } from './twit_props.js';
 
 export class TwistService {
-    createTwit(twit){
-   return twit
-}
+    createTwit(twit: ITwit) {
+        return twit;
+    }
 }
