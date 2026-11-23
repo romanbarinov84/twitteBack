@@ -1,4 +1,4 @@
 
-export interface ITwit  {
-    "description":"string";
+export interface CreateTwit {
+    "text":"string";
 }
