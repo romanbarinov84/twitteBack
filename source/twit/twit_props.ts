@@ -1,4 +1,4 @@
 
 export interface CreateTwit {
-    "text":"string";
+    "text":string;
 }

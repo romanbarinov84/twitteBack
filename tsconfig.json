@@ -12,7 +12,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": ["node","jest"]
   },
   "include": ["source/**/*.ts"],
   "exclude": ["node_modules", "dist"]
