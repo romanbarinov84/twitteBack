@@ -6,7 +6,7 @@ import { createDTO } from './twit_dto.js';
 const router = Router();
 const twistService = new TwistService();
 
-router.post('/', auth, (req, res) => {
+router.post('/', auth, async(req, res) => {
     const validation = createDTO.safeParse(req.body);
       console.log(validation);
 
@@ -15,7 +15,7 @@ router.post('/', auth, (req, res) => {
             message: validation.error.issues[0].message,
         });
     }
-    const twit = twistService.createTwit(req.body);
+    const twit = await twistService.createTwit(req.body);
     res.status(201).json(twit);
 });
 
