@@ -7,6 +7,7 @@ import express, {
 import { twitRouter } from './source/twit/twit_controller.ts';
 import dotenv from 'dotenv';
 import { prisma } from './source/twit/twit_service.ts';
+import logger from './utils/log.ts';
 
 
 dotenv.config();
@@ -33,18 +34,30 @@ async function main() {
         });
     });
 
-    app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-        console.error(err);
-
-        res.status(500).send('Something went wrong');
+   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    logger.error('Unhandled application error', {
+        message: err.message,
+        stack: err.stack,
+        method: req.method,
+        url: req.originalUrl,
     });
 
+    res.status(500).json({
+        message: 'Something went wrong',
+    });
+});
+
     app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
+        logger.info(`Server is running on port ${PORT}`);
+        
     });
 }
 
 main().catch((err) => {
-    console.error('Failed to start server:', err);
+    logger.error('Failed to start server', {
+        error: err instanceof Error ? err.message : String(err),
+        stack: err instanceof Error ? err.stack : undefined,
+    });
+
     process.exit(1);
 });
