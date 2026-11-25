@@ -8,7 +8,8 @@ import { twitRouter } from './source/twit/twit_controller.ts';
 import dotenv from 'dotenv';
 import { prisma } from './source/twit/twit_service.ts';
 import logger from './utils/log.ts';
-
+import helmet from 'helmet';
+import compression from 'compression';
 
 dotenv.config();
 
@@ -20,6 +21,8 @@ const PORT = process.env.PORT || 3000;
 async function main() {
     await prisma.$connect();
 
+    app.use(helmet());
+    app.use(compression());
     app.use(express.json());
 
     app.use('/api/twit', twitRouter);
